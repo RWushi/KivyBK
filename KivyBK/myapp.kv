@@ -1,0 +1,48 @@
+<MyButton>:
+    size_hint: 0.75, 0.1
+    pos_hint: {'center_x': 0.5}
+    font_size: (self.width + self.height) / 20
+    color: 0.988, 0.604, 0.251, 1
+    background_color: [0, 0, 0, 0]
+
+    canvas.before:
+        Color:
+            rgba: 0.988, 0.604, 0.251, 1
+        Line:
+            width: 2
+            rectangle: (self.x, self.y, self.width, self.height)
+
+FloatLayout:
+
+    Image:
+        source: 'Design/BG.jpg'
+        size: self.texture_size
+        size_hint: None, None
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        canvas.after:
+            Color:
+                rgba: 0, 0, 0, 0.8
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    MyButton:
+        text: "Выбрать фото из галереи"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+
+    MyButton:
+        text: "Сделать фото"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        on_press: app.camera()
+
+    MyButton:
+        text: "Начать гео-трансляцию"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.50}
+        on_press: app.geo_live()
+
+
+    MyButton:
+        text: "Отправить геолокацию"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+        on_press: app.location()
